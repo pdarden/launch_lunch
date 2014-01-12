@@ -4,9 +4,11 @@ class CommentsController < ApplicationController
     @comment = @dish.comments.build(comment_params)
 
     if @comment.save
-      redirect_to dish_path(@dish)
+      redirect_to dish_path(@dish),
+        flash: { success: "Your comment was posted" }
     else
-      render :new
+      render :new,
+        alert: "Something went wrong..."
     end
   end
 

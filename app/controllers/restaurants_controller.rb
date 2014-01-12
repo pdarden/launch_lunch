@@ -15,9 +15,11 @@ class RestaurantsController < ApplicationController
     @restaurant = Restaurant.new(restaurant_params)
 
     if @restaurant.save
-      redirect_to restaurant_path(@restaurant)
+      redirect_to restaurant_path(@restaurant),
+        flash: { success: "Your restaurant was added!" }
     else
-      render :new
+      render :new,
+        alert: "Something went wrong..."
     end
   end
 
