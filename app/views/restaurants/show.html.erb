@@ -8,7 +8,7 @@
   <% if @restaurant.dishes.nil? %>
     There are no dishes added for <%= @restaurant.name %>.
   <% else %>
-    <%= @restaurant.dishes.each do |dish| %>
+    <% @restaurant.dishes.each do |dish| %>
       <strong>Name:</strong> <%= dish.name %><br>
       <strong>Price:</strong> $<%= dish.price_in_dollars %><br>
       <% if dish.category.present? %>
