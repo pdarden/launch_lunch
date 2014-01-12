@@ -1,27 +1,29 @@
-<h1><%=@restaurant.name%></h1>
+<div class="row">
+  <div class="col-md-5">
+    <h1><%=@restaurant.name%></h1>
+    <strong>Address: </strong><%= @restaurant.try(:address) %><br>
+    <strong>Description: </strong><%= @restaurant.try(:description) %><br><br>
+    <div>
+      <%= link_to "Add Dish for #{@restaurant.name}", new_restaurant_dish_path(@restaurant), class: 'btn btn-success' %>
+    </div>
+  </div>
 
-<strong>Address: </strong><%= @restaurant.try(:address) %><br>
-<strong>Description: </strong><%= @restaurant.try(:description) %><br>
-
-<div>
-  <h3>Dishes</h3>
-  <% if @restaurant.dishes.nil? %>
-    There are no dishes added for <%= @restaurant.name %>.
-  <% else %>
-    <% @restaurant.dishes.each do |dish| %>
-      <strong>Name:</strong> <%= dish.name %><br>
-      <strong>Price:</strong> $<%= dish.price_in_dollars %><br>
-      <% if dish.category.present? %>
-        <strong>Category:</strong> <%= dish.category.name %><br>
+  <div class="col-md-7">
+    <h3>Dishes</h3>
+    <% if @restaurant.dishes.nil? %>
+      There are no dishes added for <%= @restaurant.name %>.
+    <% else %>
+      <% @restaurant.dishes.each do |dish| %>
+        <strong>Name:</strong> <%= dish.name %><br>
+        <strong>Price:</strong> $<%= dish.price_in_dollars %><br>
+        <% if dish.category.present? %>
+          <strong>Category:</strong> <%= dish.category.name %><br>
+        <% end %>
+        <% if dish.description.present? %>
+          <%= dish.description %><br>
+        <% end %>
+        <%= link_to "#{dish.comments.count} comments", restaurant_dish_path(@restaurant, dish) %><br><br>
       <% end %>
-      <% if dish.description.present? %>
-        <%= dish.description %><br>
-      <% end %>
-      <%= link_to "#{dish.comments.count} comments", restaurant_dish_path(@restaurant, dish) %>
     <% end %>
-  <% end %>
-</div>
-<br>
-<div>
-  <%= link_to "Add Dish for #{@restaurant.name}", new_restaurant_dish_path(@restaurant), class: 'btn btn-success' %>
+  </div>
 </div>
