@@ -23,9 +23,7 @@ class DishesController < ApplicationController
   end
 
   def random
-
-    random_number = rand(Dish.all.count) + 1
-    @dish = Dish.find(random_number)
+    @dish = Dish.all.sample
     if @dish.present?
       redirect_to restaurant_dish_path(@dish.restaurant, @dish)
     else
