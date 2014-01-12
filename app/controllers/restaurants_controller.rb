@@ -1,6 +1,10 @@
 class RestaurantsController < ApplicationController
   def index
     @restaurants = Restaurant.all
+    if !@restaurants.present?
+      redirect_to new_restaurant_path,
+        notice: "There's no restaurant yet. But, you should add one!"
+    end
   end
 
   def show
