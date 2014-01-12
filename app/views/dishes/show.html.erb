@@ -1,0 +1,22 @@
+<h1><%= @dish.name %></h1>
+
+<strong>Price:</strong> $<%= @dish.price_in_dollars %><br>
+<strong>Description:</strong> <%= @dish.description %><br>
+<strong>Category:</strong> <%= @dish.category.name %><hr>
+
+<div>
+  <%= render 'comments/form' %>
+</div>
+<br>
+<div>
+  <% @dish.comments.each do |comment| %>
+    <% if comment.body.present? %>
+      <div class="well">
+    <% else %>
+      <div class="hidden" >
+    <% end %>
+      <strong>By:</strong> <%= comment.author %><br>
+      <%= comment.body %>
+    </div>
+  <% end %>
+</div>

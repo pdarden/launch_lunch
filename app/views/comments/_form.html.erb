@@ -1,0 +1,5 @@
+<%= simple_form_for([@dish, @comment], html: { class: 'form-vertical' }) do |f| %>
+  <%= f.input :author %>
+  <%= f.input :body, as: :text, label: "Comment" %>
+  <%= f.submit "Add Comment", class: 'btn btn-success' %>
+<% end %>

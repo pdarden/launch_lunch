@@ -2,8 +2,8 @@
 
 FactoryGirl.define do
   factory :restaurant do
-    name "MyString"
-    address "MyString"
-    description "MyText"
+    sequence(:name) { |n| "Four Dollar Place #{n}" }
+    address "Chinatown"
+    description "Only $4 lunch!"
   end
 end

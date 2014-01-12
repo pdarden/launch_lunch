@@ -1,0 +1,6 @@
+<%= simple_form_for(@restaurant, html: { class: 'form-vertical' }) do |f| %>
+  <%= f.input :name, autofocus: true %>
+  <%= f.input :address %>
+  <%= f.input :description %>
+  <%= f.submit "Add Restaurant", class: 'btn btn-success' %>
+<% end %>

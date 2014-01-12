@@ -2,8 +2,8 @@
 
 FactoryGirl.define do
   factory :dish do
-    name "MyString"
-    price_in_cents 1
+    name "Pork Dumplings"
+    price_in_cents 400
     restaurant_id 1
     category_id 1
     description "MyText"

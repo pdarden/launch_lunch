@@ -1,0 +1,9 @@
+<h1>Creating Dish For <%= @restaurant.name %></h1>
+
+<%= simple_form_for([@restaurant, @dish], html: { class: 'form-vertical' }) do |f| %>
+  <%= f.input :name, autofocus: true %>
+  <%= f.input :price_in_dollars, label: "Price" %>
+  <%= f.input :description, as: :text %>
+  <%= f.association :category, collection: Category.all %>
+  <%= f.submit "Add Dish", class: 'btn btn-success' %>
+<% end %>
